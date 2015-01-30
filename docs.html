@@ -13,9 +13,27 @@ layout: default
 </div>
 
 <div class="api">
-    <h2 class="scp text-center">Final Functions</h2>
+    <div class="page-header">
+        <h1 class="scp text-center">
+            Overview
+        </h1>
+    </div>
+    <div class="api-table center-block">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-block" style="width:80%">
+                    {% markdown api-table.md %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h2 class="scp text-center">Final Functions</h2>
+    </div>
+
     <div class="api-function">
-        <h3 class="function-name text-center" id="get">get</h3>
+        <h3 class="function-name text-center" id="get"><a href="#get">get</a></h3>
         <div class="row">
             <div class="col-md-6">
                 <p class="describe">Get the value at the focus of the lens and return it.</p>
@@ -23,9 +41,7 @@ layout: default
 
             <div class="col-md-6">
                 <pre>
-                    <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
-
-                        lens.get();</code>
+                    <code class="js">{% include get.js %}</code>
                 </pre>
                 <pre class="out">
                     <code class="bash"><i class="fa fa-terminal"></i> 3</code>

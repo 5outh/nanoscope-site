@@ -87,9 +87,73 @@
 </div>
 
 <div class="api">
-    <h2 class="scp text-center">Final Functions</h2>
+    <div class="page-header">
+        <h1 class="scp text-center">
+            Overview
+        </h1>
+    </div>
+    <div class="api-table center-block">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-block" style="width:80%">
+                    <table>
+  <thead>
+    <tr>
+      <th>Top-level functions</th>
+      <th>Final functions</th>
+      <th>Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#filter"><code>filter</code></a> (alias: <code>filtering</code>)</td>
+      <td><a href="#get"><code>get</code></a></td>
+      <td><a href="#then"><code>then</code></a></td>
+    </tr>
+    <tr>
+      <td><a href="#index"><code>index</code></a> (alias: <code>indexing</code>)</td>
+      <td><a href="#set"><code>set</code></a></td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#unsafeIndex"><code>unsafeIndex</code></a> (alias: <code>unsafelyIndexing</code>)</td>
+      <td><a href="#map"><code>map</code></a></td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#slice"><code>slice</code></a> (alias: <code>slicing</code>)</td>
+      <td><a href="#catch"><code>catch</code></a></td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#path"><code>path</code></a> (alias: <code>following</code>)</td>
+      <td>&#160;</td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#pluck"><code>pluck</code></a> (alias: <code>plucking</code>)</td>
+      <td>&#160;</td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#recursivePluck"><code>recursivePluck</code></a> (alias: <code>recursivelyPlucking</code>)</td>
+      <td>&#160;</td>
+      <td>&#160;</td>
+    </tr>
+  </tbody>
+</table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h2 class="scp text-center">Final Functions</h2>
+    </div>
+
     <div class="api-function">
-        <h3 class="function-name text-center" id="get">get</h3>
+        <h3 class="function-name text-center" id="get"><a href="#get">get</a></h3>
         <div class="row">
             <div class="col-md-6">
                 <p class="describe">Get the value at the focus of the lens and return it.</p>
@@ -99,7 +163,7 @@
                 <pre>
                     <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
 
-                        lens.get();</code>
+lens.get();</code>
                 </pre>
                 <pre class="out">
                     <code class="bash"><i class="fa fa-terminal"></i> 3</code>

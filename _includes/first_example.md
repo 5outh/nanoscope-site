@@ -1,5 +1,6 @@
 var nanoscope = require('nanoscope');
 
+
 game = {
     player: {
         location: { x: 6, y: 10},
