@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron nanoscope-banner">
+    <!-- Github Banner -->
+    <div style="position: absolute; top: 0; right: 0; border: 0;">
+        <a href="https://github.com/5outh/nanoscope"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+    </div>
+    <a href="index.html"><img src="./img/NanoscopeLogo-White.png" width="75%" class="center-block"/></a>
+    <h3 class="text-center white scp">A Guide to Getting Started</h3>
+</div>
+
+<div class="introduction scp">
+    <div class="page-header">
+        <h1 id="intro">What is nanoscope?</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <strong>nanoscope</strong> is a javascript library designed to make complex transformations of data much easier.
+                It is a built on the idea of a functional <strong>Lens</strong> -- a construct that enables focusing on sub-parts
+                of data structures to get and modify. <strong>nanoscope</strong> is a collection of these so-called <strong>Lenses</strong> boxed
+                up into a convenient package with a simple, intuitive interface.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="first-example scp">
+    <div class="page-header">
+        <h1 id="first-example" class="text-center">How about an example?</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            {% highlight javascript %}
+            {% include first_example.md %}
+            {% endhighlight %}
+        </div>
+        <div class="col-md-5">
+            <p class="describe" style="margin-top:1em;">First, require <code>nanoscope</code>.</p>
+            <p class="describe">
+                Suppose we have a simple representation of a game of Pac-Man in front of us that someone built
+                using raw dynamic objects. We have some garbage to locate and get rid of, and perhaps
+                we want to modify the game in some way.
+            </p>
+
+            <div style="height: 19em"></div>
+
+            <p class="describe">First, we construct a lens that looks into our game object.</p>
+
+            <div style="height: 0.1em"></div>
+
+            <p class="describe">
+                We can use <code>path</code> to look into a nested object, and <code>set</code>
+                to modify it. <code>set</code> returns a modified game, so we set it here. Notice that we're setting
+                a property that you might expect to throw an error -- with nanoscope, modification proceeds safely, and
+                our player's first name is set to 'Pac-Man'
+            </p>
+
+            <p class="describe">
+                Here, we focus on the location of the first enemy in the enemies table, and pull out its <code>x</code>
+                coordinate. <code>following</code> is an alias for <code>path</code>; <code>nanoscope</code> has many
+                aliases like these so you can use it how you want.
+            </p>
+
+            <p class="describe">
+                We can use <code>plucking</code> to focus on on specific properties of an object and transform them.
+                This increments the player's <code>x</code> and <code>y</code> coordinates and returns a new game object.
+            </p>
+
+            <div style="height: 0.2em"></div>
+
+            <p class="describe">
+                There are many more functions we can use to further prune data. Here, we find Clyde and extract his traits --
+                well, all of the traits that consist only of letters -- using <code>filter</code>. If Clyde
+                didn't exist in the enemies list, <code>nanoscope</code> wouldn't care;
+                this would just return <code>[]</code> instead of failing catastrophically.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div class="introduction scp">
+    <div class="page-header">
+        <h1 class="scp">What now?</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                This is just the tip of the iceberg when it comes to <code>nanoscope</code>. Refer to the <a href="api.html">API Documentation</a>
+                for more cool stuff that you can do with the library. Have fun!
+            </p>
+        </div>
+    </div>
+</div>
