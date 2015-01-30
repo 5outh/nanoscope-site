@@ -29,7 +29,30 @@ layout: default
     </div>
 
     <div class="page-header">
-        <h2 class="scp text-center">Final Functions</h2>
+        <h2 class="scp text-center">Top-level functions</h2>
+    </div>
+    <div class="api-function">
+        <h3 class="function-name text-center" id="filter"><a href="#filter">filter</a></h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="describe">Focus on elements of an array filtered by a regular expression or function.</p>
+            </div>
+
+            <div class="col-md-6">
+            <pre>
+                <code class="js">{% include filter.js %}</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 100, 3]
+<i class="fa fa-terminal"></i> ['a']</code>
+            </pre>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-header">
+        <h2 class="scp text-center">Final functions</h2>
     </div>
 
     <div class="api-function">
@@ -49,4 +72,29 @@ layout: default
             </div>
         </div>
     </div>
+
+    <div class="page-header">
+        <h2 class="scp text-center">Other</h2>
+    </div>
+
+
+    <div class="api-function">
+        <h3 class="function-name text-center" id="then"><a href="#then">then</a></h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="describe">Alias for the current <code>lens</code>, used for the sole purpose
+                of making chains look nicer.</p>
+            </div>
+
+            <div class="col-md-6">
+                <pre>
+                    <code class="js">{% include then.js %}</code>
+                </pre>
+                <pre class="out">
+                    <code class="bash"><i class="fa fa-terminal"></i> 10</code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -29,7 +29,7 @@ var lens = nanoscope(game);
 
 
 
-var game = lens.path('player.name.first').set('Pac-Man');
+game = lens.path('player.name.first').set('Pac-Man');
 
 
 

@@ -127,12 +127,12 @@
     </tr>
     <tr>
       <td><a href="#path"><code>path</code></a> (alias: <code>following</code>)</td>
-      <td>&#160;</td>
+      <td><a href="#setter"><code>setter</code></a></td>
       <td>&#160;</td>
     </tr>
     <tr>
       <td><a href="#pluck"><code>pluck</code></a> (alias: <code>plucking</code>)</td>
-      <td>&#160;</td>
+      <td><a href="#getter"><code>getter</code></a></td>
       <td>&#160;</td>
     </tr>
     <tr>
@@ -149,7 +149,34 @@
     </div>
 
     <div class="page-header">
-        <h2 class="scp text-center">Final Functions</h2>
+        <h2 class="scp text-center">Top-level functions</h2>
+    </div>
+    <div class="api-function">
+        <h3 class="function-name text-center" id="filter"><a href="#filter">filter</a></h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="describe">Focus on elements of an array filtered by a regular expression or function.</p>
+            </div>
+
+            <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([1, 2, 3]).filter(function (elem) {
+    return (elem % 2 === 0);
+}).set(100);
+
+nanoscope(['a', 'B', 'C']).filter(/[a-z]/).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 100, 3]
+<i class="fa fa-terminal"></i> ['a']</code>
+            </pre>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-header">
+        <h2 class="scp text-center">Final functions</h2>
     </div>
 
     <div class="api-function">
@@ -171,6 +198,31 @@ lens.get();</code>
             </div>
         </div>
     </div>
+
+    <div class="page-header">
+        <h2 class="scp text-center">Other</h2>
+    </div>
+
+
+    <div class="api-function">
+        <h3 class="function-name text-center" id="then"><a href="#then">then</a></h3>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="describe">Alias for the current <code>lens</code>, used for the sole purpose
+                of making chains look nicer.</p>
+            </div>
+
+            <div class="col-md-6">
+                <pre>
+                    <code class="js">nanoscope([{ a: { b: 10 } }]).index(0).then.path('a.b').get();</code>
+                </pre>
+                <pre class="out">
+                    <code class="bash"><i class="fa fa-terminal"></i> 10</code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
 </div>
 
     <div id="footer" class="container">

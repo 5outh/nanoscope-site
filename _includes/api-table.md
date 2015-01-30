@@ -4,6 +4,6 @@
 | [`index`](#index) (alias: `indexing`) | [`set`](#set)|   |
 | [`unsafeIndex`](#unsafeIndex) (alias: `unsafelyIndexing`)| [`map`](#map)|   |
 | [`slice`](#slice) (alias: `slicing`) | [`catch`](#catch)|   |
-| [`path`](#path) (alias: `following`) |   |   |
-| [`pluck`](#pluck) (alias: `plucking`) |   |   |
+| [`path`](#path) (alias: `following`) | [`setter`](#setter)|   |
+| [`pluck`](#pluck) (alias: `plucking`) | [`getter`](#getter)|   |
 | [`recursivePluck`](#recursivePluck) (alias: `recursivelyPlucking`) |   |   |
