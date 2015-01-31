@@ -151,6 +151,7 @@
     <div class="page-header">
         <h2 class="scp text-center">Top-level functions</h2>
     </div>
+
     <div class="api-function">
         <h3 class="function-name text-center" id="filter"><a href="#filter">filter</a></h3>
         <div class="row">
@@ -185,16 +186,15 @@ nanoscope(['a', 'B', 'C']).filter(/[a-z]/).get();</code>
             <div class="col-md-6">
                 <p class="describe">Get the value at the focus of the lens and return it.</p>
             </div>
-
             <div class="col-md-6">
-                <pre>
-                    <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
-
-lens.get();</code>
-                </pre>
-                <pre class="out">
-                    <code class="bash"><i class="fa fa-terminal"></i> 3</code>
-                </pre>
+            <pre>
+                <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
+                    lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 3
+                </code>
+            </pre>
             </div>
         </div>
     </div>
