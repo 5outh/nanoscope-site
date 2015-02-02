@@ -73,3 +73,16 @@
 .api-function {
     margin-top:1em;
 }
+
+.navbar {
+    background-color: white;
+    border-bottom: 2px solid #f3f3f3;
+}
+
+.navbar a {
+    font-size: 100%
+}
+
+.container{
+    padding-top: 1em;
+}
