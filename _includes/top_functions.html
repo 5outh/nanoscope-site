@@ -1,0 +1,219 @@
+<div class="api-function">
+    <h3 class="function-name text-center" id="filter"><a href="#filter">filter</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on elements of an array filtered by a regular expression or function.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([1, 2, 3]).filter(function (elem) {
+    return (elem % 2 === 0);
+}).set(100);
+
+nanoscope([&#x27;a&#x27;, &#x27;B&#x27;, &#x27;C&#x27;]).filter(/[a-z]/).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 100, 3]
+<i class="fa fa-terminal"></i> [&#x27;a&#x27;]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="index"><a href="#index">index</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on the element of an array at a given index. Returns undefined if the index is out of bounds.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([1, 2, 3]).index(0).map(function (num) {
+    return (num + 100);
+});</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [101, 2, 3]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="unsafeIndex"><a href="#unsafeIndex">unsafeIndex</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Same as index, but throws errors if trying to access an element outside of array bounds. Allows setting the element directly after the end of an array (arr[arr.length]).</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([1, 2, 3]).unsafeIndex(0).get();
+
+nanoscope([]).unsafeIndex(0).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 1
+<i class="fa fa-terminal"></i> Error: Attempt to access invalid index 0</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="slice"><a href="#slice">slice</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on a slice of an array. A slice can be specified using either start and end bounds (negative bounds count from the end of an array) or by a string in python-style syntax (i.e &#x27;1:10&#x27;).</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([1, 2, 3]).slice(&#x27;1:&#x27;).get();
+
+nanoscope([1, 2, 3]).slice(0, -1).set([5, 4]);
+// #=&gt; [5, 4, 3]</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [2, 3]
+<i class="fa fa-terminal"></i> [5, 4, 3]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="path"><a href="#path">path</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on the value located at some path in an object. Paths are given by .-separated strings. If the value at a path doesn&#x27;t exist (i.e. accessing {}.a.b), get() will return undefined, even if it would otherwise throw an error. set() will set the value, adding properties as necessary. map() will do the same, but if its output returns undefined, the structure will be unmodified. Note that setting values that don&#x27;t exist can overwrite parent objects (see the final example).</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var obj = {
+    a: {
+        b: &#x27;flintstones&#x27;
+    }
+}, lens = nanoscope(obj);
+
+nanoscope.path(&#x27;a.b&#x27;).get();
+
+nanoscope.path(&#x27;a.b.c.d&#x27;).get();
+
+nanoscope.path(&#x27;a.b.c.d&#x27;).set(&#x27;vitamins&#x27;);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> &#x27;flintstones&#x27;
+<i class="fa fa-terminal"></i> undefined
+<i class="fa fa-terminal"></i> { a: { b: { c: { d: &#x27;vitamins&#x27; } } } }</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="unsafePath"><a href="#unsafePath">unsafePath</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">The same as path, but does not attempt to catch errors and will instead throw them.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope({}).path(&#x27;a.b&#x27;).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> Error: Cannot read property &#x27;b&#x27; of undefined</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="pluck"><a href="#pluck">pluck</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on a set of properties in an object matching one of:
+
+* an array of properties (e.g. [&#x27;a&#x27;, &#x27;b&#x27;]),
+* a regular expression (e.g /[a-b]/)
+* or a function (e.g function (prop) { return prop.match(/[a-b]/); }
+Note that this does not recurse into subobjects, and only operates on the top-level properties.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope({
+    &#x27;abc&#x27; : 1,
+    &#x27;def&#x27; : 2,
+    &#x27;WAT&#x27; : null
+});
+
+lens.pluck([&#x27;abc&#x27;]).get();
+
+lens.pluck(/[a-d]*/).get();
+
+lens.pluck(function (prop, val) {
+    return !val;
+}).set(&#x27;unknown&#x27;);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> { &#x27;abc&#x27;: 1 }
+<i class="fa fa-terminal"></i> { &#x27;abc&#x27;: 1, &#x27;def&#x27;: 2 }
+<i class="fa fa-terminal"></i> { &#x27;abc&#x27;: 1, &#x27;def&#x27;: 2, &#x27;WAT&#x27;: &#x27;unknown&#x27; }</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="recursivePluck"><a href="#recursivePluck">recursivePluck</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">The same as pluck, but recurses into subobjects.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope({
+    a: { b: 100, C: 99 }
+});
+
+lens.pluck(/[a-z]/).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> { a: { b: 100 } }</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="each"><a href="#each">each</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on every element of an array and further process it.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope({
+    locations: [{x: 100, y: 200}, {x: 10, y: 0}]
+}).path(&#x27;locations&#x27;)
+  .each(function (loc) {
+      return loc.path(&#x27;x&#x27;);
+  }).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [100, 10]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="own"><a href="#own">own</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Focus on every value of an object and further process it.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope({
+    x: [100],
+    y: [200]
+}).own(function (val) {
+    return val.index(0);
+}).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [100, 10]</code>
+            </pre>
+        </div>
+    </div>
+</div>

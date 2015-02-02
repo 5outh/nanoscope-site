@@ -44,6 +44,6 @@ contexts = [
         code: getCode('getter'),
         output_lines: [{ out: '1\n' }, { out: 'Error: map not permitted in a Getter' }]
     }
-]
+];
 
 module.exports = contexts;

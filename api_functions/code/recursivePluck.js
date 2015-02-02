@@ -3,4 +3,3 @@ var lens = nanoscope({
 });
 
 lens.pluck(/[a-z]/).get();
-// #=> { a: { b: 100 } }
