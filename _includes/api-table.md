@@ -1,9 +1,11 @@
-| Top-level functions | Final functions | Other |
+| Top-level (chainable) functions | Final functions | Other |
 |---|---|---|
-| [`filter`](#filter) (alias: `filtering`) | [`get`](#get)                | [`then`](#then)|
-| [`index`](#index) (alias: `indexing`) | [`set`](#set)|   |
-| [`unsafeIndex`](#unsafeIndex) (alias: `unsafelyIndexing`)| [`map`](#map)|   |
-| [`slice`](#slice) (alias: `slicing`) | [`catch`](#catch)|   |
-| [`path`](#path) (alias: `following`) | [`setter`](#setter)|   |
-| [`pluck`](#pluck) (alias: `plucking`) | [`getter`](#getter)|   |
+| [`filter`](#filter) (alias: `filtering`) | [`get`](#get) | [`then`](#then)|
+| [`index`](#index) (alias: `indexing`) | [`set`](#set)| [`catch`](#catch) |
+| [`unsafeIndex`](#unsafeIndex) (alias: `unsafelyIndexing`)| [`map`](#map)|  [`mixin`](#mixin) |
+| [`slice`](#slice) (alias: `slicing`) | | [`setter`](#setter)|
+| [`path`](#path) (alias: `following`) | | [`getter`](#getter)|
+| [`pluck`](#pluck) (alias: `plucking`) | | |
 | [`recursivePluck`](#recursivePluck) (alias: `recursivelyPlucking`) |   |   |
+| [`each`](#each)|   |   |
+| [`own`](#own)|   |   |

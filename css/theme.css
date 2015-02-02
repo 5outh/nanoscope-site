@@ -67,4 +67,9 @@
 
 .api-function h3 {
     margin-bottom: 0;
+    padding-top:1em;
+}
+
+.api-function {
+    margin-top:1em;
 }

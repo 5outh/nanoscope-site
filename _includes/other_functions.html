@@ -1,0 +1,102 @@
+<div class="api-function">
+    <h3 class="function-name text-center" id="then"><a href="#then">then</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Alias for the current lens that (kind of) improves readability.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([{ a: { b: 10 } }]).index(0).then.path(&#x27;a.b&#x27;).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 10</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="catch"><a href="#catch">catch</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Catch any exceptions thrown from an unsafe lens and handle them with an error handler</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope([]).unsafeIndex(10000).catch(console.log);
+
+lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [Error: Attempt to access invalid index 10000]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="mixin"><a href="#mixin">mixin</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Add a function to &#x60;nanoscope&#x60;. The &#x60;this&#x60; context in the lens passed in will be replaced with the
+current nanoscope context when it is called. Any function like this should return a new Lens (i.e. use
+only the existing chainable nanoscope functions) or terminate with one of the final functions.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var within = function (target, alpha) {
+    return this.filtering(function (elem) {
+        return (target - alpha) &lt; elem  &amp;&amp; elem &lt; (target + alpha);
+    });
+};
+
+nanoscope.mixin({within: within});
+
+nanoscope([10, 2.5, 3]).within(3.5, 1.5).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [2.5, 3.5]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="setter"><a href="#setter">setter</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Disallow set and map in a Lens. Typically called at the end of Lens construction because internal functions rely on set and map occasionally.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope({ a: 100 }).path(&#x27;a&#x27;).setter();
+
+lens.set(30);
+
+lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> { a: 30 }
+<i class="fa fa-terminal"></i> Error: get not permitted in a Setter</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="getter"><a href="#getter">getter</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Catch any exceptions thrown from an unsafe lens and handle them with an error handler</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope([1]).index(0).getter();
+
+lens.get();
+
+lens.set(100);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 1
+<i class="fa fa-terminal"></i> Error: map not permitted in a Getter</code>
+            </pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="api-function">
+    <h3 class="function-name text-center" id="get"><a href="#get">get</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Get the value at the focus of the lens and return it.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
+
+lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 3</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="set"><a href="#set">set</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Set the value at the focus of the lens and return a modified structure.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope.index([1, 2, 3]).index(2);
+
+lens.set(100);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 2, 100]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="map"><a href="#map">map</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Map the value at the focus of the lens to something else using a function and return a modified structure.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope.index([1, 2, 3]).index(2);
+
+lens.map(function (num) {
+    return (num * num);
+});</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 2, 9]</code>
+            </pre>
+        </div>
+    </div>
+</div>

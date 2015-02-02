@@ -99,7 +99,7 @@
                     <table>
   <thead>
     <tr>
-      <th>Top-level functions</th>
+      <th>Top-level (chainable) functions</th>
       <th>Final functions</th>
       <th>Other</th>
     </tr>
@@ -113,30 +113,40 @@
     <tr>
       <td><a href="#index"><code>index</code></a> (alias: <code>indexing</code>)</td>
       <td><a href="#set"><code>set</code></a></td>
-      <td>&#160;</td>
+      <td><a href="#catch"><code>catch</code></a></td>
     </tr>
     <tr>
       <td><a href="#unsafeIndex"><code>unsafeIndex</code></a> (alias: <code>unsafelyIndexing</code>)</td>
       <td><a href="#map"><code>map</code></a></td>
-      <td>&#160;</td>
+      <td><a href="#mixin"><code>mixin</code></a></td>
     </tr>
     <tr>
       <td><a href="#slice"><code>slice</code></a> (alias: <code>slicing</code>)</td>
-      <td><a href="#catch"><code>catch</code></a></td>
       <td>&#160;</td>
+      <td><a href="#setter"><code>setter</code></a></td>
     </tr>
     <tr>
       <td><a href="#path"><code>path</code></a> (alias: <code>following</code>)</td>
-      <td><a href="#setter"><code>setter</code></a></td>
       <td>&#160;</td>
+      <td><a href="#getter"><code>getter</code></a></td>
     </tr>
     <tr>
       <td><a href="#pluck"><code>pluck</code></a> (alias: <code>plucking</code>)</td>
-      <td><a href="#getter"><code>getter</code></a></td>
+      <td>&#160;</td>
       <td>&#160;</td>
     </tr>
     <tr>
       <td><a href="#recursivePluck"><code>recursivePluck</code></a> (alias: <code>recursivelyPlucking</code>)</td>
+      <td>&#160;</td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#each"><code>each</code></a></td>
+      <td>&#160;</td>
+      <td>&#160;</td>
+    </tr>
+    <tr>
+      <td><a href="#own"><code>own</code></a></td>
       <td>&#160;</td>
       <td>&#160;</td>
     </tr>
@@ -152,76 +162,177 @@
         <h2 class="scp text-center">Top-level functions</h2>
     </div>
 
-    <div class="api-function">
-        <h3 class="function-name text-center" id="filter"><a href="#filter">filter</a></h3>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="describe">Focus on elements of an array filtered by a regular expression or function.</p>
-            </div>
-
-            <div class="col-md-6">
-            <pre>
-                <code class="js">nanoscope([1, 2, 3]).filter(function (elem) {
-    return (elem % 2 === 0);
-}).set(100);
-
-nanoscope(['a', 'B', 'C']).filter(/[a-z]/).get();</code>
-            </pre>
-            <pre class="out">
-                <code class="bash"><i class="fa fa-terminal"></i> [1, 100, 3]
-<i class="fa fa-terminal"></i> ['a']</code>
-            </pre>
-            </div>
-        </div>
-    </div>
-
+    
 
     <div class="page-header">
         <h2 class="scp text-center">Final functions</h2>
     </div>
 
     <div class="api-function">
-        <h3 class="function-name text-center" id="get"><a href="#get">get</a></h3>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="describe">Get the value at the focus of the lens and return it.</p>
-            </div>
-            <div class="col-md-6">
+    <h3 class="function-name text-center" id="get"><a href="#get">get</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Get the value at the focus of the lens and return it.</p>
+        </div>
+        <div class="col-md-6">
             <pre>
                 <code class="js">var lens = nanoscope([1, 2, 3]).index(2);
-                    lens.get();</code>
+
+lens.get();</code>
             </pre>
             <pre class="out">
-                <code class="bash"><i class="fa fa-terminal"></i> 3
-                </code>
+                <code class="bash"><i class="fa fa-terminal"></i> 3</code>
             </pre>
-            </div>
         </div>
     </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="set"><a href="#set">set</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Set the value at the focus of the lens and return a modified structure.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope.index([1, 2, 3]).index(2);
+
+lens.set(100);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 2, 100]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="map"><a href="#map">map</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Map the value at the focus of the lens to something else using a function and return a modified structure.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope.index([1, 2, 3]).index(2);
+
+lens.map(function (num) {
+    return (num * num);
+});</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 2, 9]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+
 
     <div class="page-header">
         <h2 class="scp text-center">Other</h2>
     </div>
 
-
     <div class="api-function">
-        <h3 class="function-name text-center" id="then"><a href="#then">then</a></h3>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="describe">Alias for the current <code>lens</code>, used for the sole purpose
-                of making chains look nicer.</p>
-            </div>
-
-            <div class="col-md-6">
-                <pre>
-                    <code class="js">nanoscope([{ a: { b: 10 } }]).index(0).then.path('a.b').get();</code>
-                </pre>
-                <pre class="out">
-                    <code class="bash"><i class="fa fa-terminal"></i> 10</code>
-                </pre>
-            </div>
+    <h3 class="function-name text-center" id="then"><a href="#then">then</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Alias for the current lens that (kind of) improves readability.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">nanoscope([{ a: { b: 10 } }]).index(0).then.path(&#x27;a.b&#x27;).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 10</code>
+            </pre>
         </div>
     </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="catch"><a href="#catch">catch</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Catch any exceptions thrown from an unsafe lens and handle them with an error handler</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope([]).unsafeIndex(10000).catch(console.log);
+
+lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [Error: Attempt to access invalid index 10000]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="mixin"><a href="#mixin">mixin</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Add a function to &#x60;nanoscope&#x60;. The &#x60;this&#x60; context in the lens passed in will be replaced with the
+current nanoscope context when it is called. Any function like this should return a new Lens (i.e. use
+only the existing chainable nanoscope functions) or terminate with one of the final functions.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var within = function (target, alpha) {
+    return this.filtering(function (elem) {
+        return (target - alpha) &lt; elem  &amp;&amp; elem &lt; (target + alpha);
+    });
+};
+
+nanoscope.mixin({within: within});
+
+nanoscope([10, 2.5, 3]).within(3.5, 1.5).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [2.5, 3.5]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="setter"><a href="#setter">setter</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Disallow set and map in a Lens. Typically called at the end of Lens construction because internal functions rely on set and map occasionally.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope({ a: 100 }).path(&#x27;a&#x27;).setter();
+
+lens.set(30);
+
+lens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> { a: 30 }
+<i class="fa fa-terminal"></i> Error: get not permitted in a Setter</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="getter"><a href="#getter">getter</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Catch any exceptions thrown from an unsafe lens and handle them with an error handler</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var lens = nanoscope([1]).index(0).getter();
+
+lens.get();
+
+lens.set(100);</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 1
+<i class="fa fa-terminal"></i> Error: map not permitted in a Getter</code>
+            </pre>
+        </div>
+    </div>
+</div>
+
 
 </div>
 
