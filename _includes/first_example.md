@@ -14,11 +14,9 @@ game = {
             traits: ['Mischievous','Persistent', 'Tricky']
         },
         {
-        location: {
-            x: 2, y: 22
-        },
-        name: 'Clyde',
-        traits: ['Ignorant', 'Goofy', '##$@??']
+            location: { x: 2, y: 22 },
+            name: 'Clyde',
+            traits: ['Ignorant', 'Goofy', '##$@??']
         }
     ],
     pelletLocations: [{ x: 10, y: 12 }, {x: 11, y: 15 }]
