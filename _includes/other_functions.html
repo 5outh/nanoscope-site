@@ -62,7 +62,7 @@ nanoscope([10, 2.5, 3]).within(3.5, 1.5).get();</code>
     <h3 class="function-name text-center" id="setter"><a href="#setter">setter</a></h3>
     <div class="row">
         <div class="col-md-6">
-            <p class="describe">Disallow set and map in a Lens. Typically called at the end of Lens construction because internal functions rely on set and map occasionally.</p>
+            <p class="describe">Disallow get in a Lens. Typically called at the end of Lens construction because internal functions rely on get occasionally.</p>
         </div>
         <div class="col-md-6">
             <pre>
@@ -83,7 +83,7 @@ lens.get();</code>
     <h3 class="function-name text-center" id="getter"><a href="#getter">getter</a></h3>
     <div class="row">
         <div class="col-md-6">
-            <p class="describe">Catch any exceptions thrown from an unsafe lens and handle them with an error handler</p>
+            <p class="describe">Disallow set and map in a Lens. Typically called at the end of Lens construction because internal functions rely on set and map occasionally.</p>
         </div>
         <div class="col-md-6">
             <pre>
@@ -96,6 +96,56 @@ lens.set(100);</code>
             <pre class="out">
                 <code class="bash"><i class="fa fa-terminal"></i> 1
 <i class="fa fa-terminal"></i> Error: map not permitted in a Getter</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="and"><a href="#and">and</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Add a view to a lens and focus on both of their foci if and only if both exist.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var foobar = {foo: 1, bar: 2},
+    lens = nanoscope(foobar),
+    conjunctiveLens = lens.path(&#x27;foo&#x27;).and(lens.path(&#x27;bar&#x27;));
+
+conjunctiveLens.get();
+
+conjunctiveLens = lens.path(&#x27;foo&#x27;).and(lens.path(&#x27;baz&#x27;));
+
+conjunctiveLens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> [1, 2]
+<i class="fa fa-terminal"></i> null</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="or"><a href="#or">or</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Add a view to a lens and focus on the first one that exists.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var foobar = {foo: 1, bar: 2},
+    lens = nanoscope(foobar),
+    conjunctiveLens = lens.path(&#x27;foo&#x27;).or(lens.path(&#x27;bar&#x27;));
+
+conjunctiveLens.get();
+
+conjunctiveLens = lens.path(&#x27;baz&#x27;).or(lens.path(&#x27;bar&#x27;));
+
+conjunctiveLens.get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 1
+<i class="fa fa-terminal"></i> 2</code>
             </pre>
         </div>
     </div>

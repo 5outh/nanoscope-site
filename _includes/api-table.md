@@ -5,7 +5,9 @@
 | [`unsafeIndex`](#unsafeIndex) (alias: `unsafelyIndexing`)| [`map`](#map)|  [`mixin`](#mixin) |
 | [`slice`](#slice) (alias: `slicing`) | | [`setter`](#setter)|
 | [`path`](#path) (alias: `following`) | | [`getter`](#getter)|
-| [`pluck`](#pluck) (alias: `plucking`) | | |
-| [`recursivePluck`](#recursivePluck) (alias: `recursivelyPlucking`) |   |   |
+| [`pluck`](#pluck) (alias: `plucking`) | | [`and`](#and)|
+| [`recursivePluck`](#recursivePluck) (alias: `recursivelyPlucking`) |   | [`or`](#or)|
 | [`each`](#each)|   |   |
 | [`own`](#own)|   |   |
+| [`setting`](#setting)| | |
+| [`mapping`](#mapping)| | |

@@ -66,8 +66,7 @@ nanoscope([]).unsafeIndex(0).get();</code>
             <pre>
                 <code class="js">nanoscope([1, 2, 3]).slice(&#x27;1:&#x27;).get();
 
-nanoscope([1, 2, 3]).slice(0, -1).set([5, 4]);
-// #=&gt; [5, 4, 3]</code>
+nanoscope([1, 2, 3]).slice(0, -1).set([5, 4]);</code>
             </pre>
             <pre class="out">
                 <code class="bash"><i class="fa fa-terminal"></i> [2, 3]
@@ -213,6 +212,43 @@ lens.pluck(/[a-z]/).get();</code>
             </pre>
             <pre class="out">
                 <code class="bash"><i class="fa fa-terminal"></i> [100, 10]</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="setting"><a href="#setting">setting</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Set the focus of a lens to a new value and return a new lens focusing on the modified object.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var coordinate = { x: 2, y: 4 };
+
+coordinate.path(&#x27;x&#x27;).setting(200).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 200</code>
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="api-function">
+    <h3 class="function-name text-center" id="mapping"><a href="#mapping">mapping</a></h3>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="describe">Map a function over the focus of a lens to a new value and return a new lens focusing on the modified object.</p>
+        </div>
+        <div class="col-md-6">
+            <pre>
+                <code class="js">var coordinate = { x: 2, y: 4 },
+    square = function (val) { return val * val; };
+
+coordinate.path(&#x27;y&#x27;).mapping(square).get();</code>
+            </pre>
+            <pre class="out">
+                <code class="bash"><i class="fa fa-terminal"></i> 16</code>
             </pre>
         </div>
     </div>
